@@ -6,8 +6,7 @@
 
 <title>Carolina Comfort HVAC | AI Receptionist Demo</title>
 
-<!-- Vapi Voice Widget -->
-<script src="https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js" async></script>
+
 
 <style>
 :root{
@@ -168,7 +167,115 @@ header{
   color:#8295a3;
   margin-top:15px;
 }
+/* CUSTOM HVAC VOICE DEMO */
 
+.custom-voice-demo{
+  text-align:center;
+}
+
+.custom-eyebrow{
+  color:var(--blue);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  margin-bottom:10px;
+}
+
+.custom-voice-demo h2{
+  margin:0 0 22px;
+  font-size:32px;
+}
+
+.ready-text{
+  color:#8fd5ff;
+  font-size:26px;
+  line-height:1.2;
+  font-weight:800;
+  margin-bottom:7px;
+}
+
+.custom-instruction{
+  color:var(--text);
+  font-size:16px;
+  line-height:1.5;
+  margin:0 auto 5px;
+}
+
+.down-arrow{
+  color:var(--blue);
+  font-size:38px;
+  line-height:1;
+  font-weight:900;
+  margin:2px 0 15px;
+  animation:hvacArrowBounce 1.5s ease-in-out infinite;
+}
+
+.hvac-talk-button{
+  width:100%;
+  min-height:58px;
+  border:0;
+  border-radius:14px;
+  background:var(--blue);
+  color:#06111a;
+  font-size:16px;
+  font-weight:900;
+  letter-spacing:.025em;
+  cursor:pointer;
+  padding:13px 16px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+
+  box-shadow:0 5px 20px #42b9ff22;
+  transition:.2s ease;
+}
+
+.hvac-talk-button:hover{
+  transform:translateY(-1px);
+  filter:brightness(1.06);
+}
+
+.hvac-talk-button:focus-visible{
+  outline:3px solid #42b9ff66;
+  outline-offset:3px;
+}
+
+.hvac-mic-icon{
+  width:22px;
+  height:22px;
+  flex:0 0 auto;
+}
+
+.hvac-call-status{
+  font-size:12px;
+  line-height:1.5;
+  color:#8295a3;
+  margin:12px auto 0;
+  max-width:400px;
+}
+
+@keyframes hvacArrowBounce{
+
+  0%,100%{
+    transform:translateY(0);
+  }
+
+  50%{
+    transform:translateY(5px);
+  }
+
+}
+
+@media(prefers-reduced-motion:reduce){
+
+  .down-arrow{
+    animation:none;
+  }
+
+}
 /* TEST SECTION */
 
 .test-section{
@@ -411,29 +518,68 @@ footer{
 
 <!-- VOICE DEMO -->
 
-<section class="voice">
+<section class="voice custom-voice-demo">
 
-  <h2>
-    🎙️ Talk to the AI HVAC Receptionist
-  </h2>
-
-  <p>
-    Try a realistic customer conversation. Ask about HVAC services,
-    describe a heating or cooling problem, ask about estimates,
-    maintenance, service areas, or simply test what the receptionist
-    can handle.
-  </p>
-
-  <div class="launch-note">
-    Click the blue
-    <strong>Talk to the AI HVAC Receptionist</strong>
-    button in the
-    <strong>bottom-right corner</strong>
-    to start.
+  <div class="custom-eyebrow">
+    LIVE VOICE DEMO
   </div>
 
-  <div class="voice-small">
-    Allow microphone access when your browser asks.
+  <h2>
+    Talk to Our AI HVAC Receptionist
+  </h2>
+
+  <div class="ready-text">
+    Ready to try it?
+  </div>
+
+  <p class="custom-instruction">
+    Tap the button below to start a live conversation.
+  </p>
+
+  <div class="down-arrow" aria-hidden="true">
+    ↓
+  </div>
+
+  <button
+    id="hvac-talk-button"
+    class="hvac-talk-button"
+    type="button">
+
+    <svg
+      class="hvac-mic-icon"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true">
+
+      <rect
+        x="8"
+        y="3"
+        width="8"
+        height="12"
+        rx="4">
+      </rect>
+
+      <path d="M5 11a7 7 0 0 0 14 0"></path>
+      <path d="M12 18v3"></path>
+      <path d="M9 21h6"></path>
+
+    </svg>
+
+    CLICK HERE to TALK
+
+  </button>
+
+  <div
+    id="hvac-call-status"
+    class="hvac-call-status"
+    aria-live="polite">
+
+    You'll be asked to allow microphone access when the call starts.
+
   </div>
 
 </section>
@@ -611,26 +757,7 @@ footer{
 </main>
 
 
-<!-- VAPI FLOATING VOICE WIDGET -->
 
-<vapi-widget
-  public-key="2d50143b-0c3b-4a09-aa1a-faaf09714bc5"
-  assistant-id="9cd77628-f1aa-4532-a775-a36e369b9f6e"
-  mode="voice"
-  theme="dark"
-  size="compact"
-  radius="large"
-  position="bottom-right"
-  base-color="#0e1d29"
-  accent-color="#42b9ff"
-  button-base-color="#42b9ff"
-  button-accent-color="#06111a"
-  main-label="Talk to the AI HVAC Receptionist"
-  start-button-text="Start HVAC Demo"
-  end-button-text="End Call"
-  empty-voice-message="Click to start a voice conversation."
-  show-transcript="true">
-</vapi-widget>
 
 
 <footer>
@@ -641,6 +768,169 @@ footer{
   not represented as a Valentine's Services client.
 
 </footer>
+<script type="module">
 
+  import Vapi from "https://cdn.jsdelivr.net/npm/@vapi-ai/web/+esm";
+
+  const vapi = new Vapi("2d50143b-0c3b-4a09-aa1a-faaf09714bc5");
+
+  const talkButton = document.getElementById("hvac-talk-button");
+  const status = document.getElementById("hvac-call-status");
+
+  const assistantId = "9cd77628-f1aa-4532-a775-a36e369b9f6e";
+
+  let callActive = false;
+
+  function setButtonStarting(){
+
+    talkButton.innerHTML = `
+      <svg
+        class="hvac-mic-icon"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true">
+
+        <rect x="8" y="3" width="8" height="12" rx="4"></rect>
+        <path d="M5 11a7 7 0 0 0 14 0"></path>
+        <path d="M12 18v3"></path>
+        <path d="M9 21h6"></path>
+
+      </svg>
+
+      CONNECTING...
+    `;
+
+  }
+
+  function setButtonActive(){
+
+    talkButton.innerHTML = `
+      <svg
+        class="hvac-mic-icon"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true">
+
+        <rect x="8" y="3" width="8" height="12" rx="4"></rect>
+        <path d="M5 11a7 7 0 0 0 14 0"></path>
+        <path d="M12 18v3"></path>
+        <path d="M9 21h6"></path>
+
+      </svg>
+
+      END CALL
+    `;
+
+    talkButton.style.background = "#ffb84d";
+    talkButton.style.color = "#07111a";
+
+  }
+
+  function setButtonReady(){
+
+    talkButton.innerHTML = `
+      <svg
+        class="hvac-mic-icon"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true">
+
+        <rect x="8" y="3" width="8" height="12" rx="4"></rect>
+        <path d="M5 11a7 7 0 0 0 14 0"></path>
+        <path d="M12 18v3"></path>
+        <path d="M9 21h6"></path>
+
+      </svg>
+
+      CLICK HERE to TALK
+    `;
+
+    talkButton.style.background = "";
+    talkButton.style.color = "";
+
+  }
+
+  vapi.on("call-start", () => {
+
+    callActive = true;
+
+    setButtonActive();
+
+    status.textContent =
+      "You're connected. Start talking — the AI receptionist is listening.";
+
+  });
+
+  vapi.on("call-end", () => {
+
+    callActive = false;
+
+    setButtonReady();
+
+    status.textContent =
+      "Call ended. Ready to try it again.";
+
+  });
+
+  vapi.on("error", (error) => {
+
+    console.error("Vapi error:", error);
+
+    callActive = false;
+
+    setButtonReady();
+
+    status.textContent =
+      "There was a problem starting the call. Please try again.";
+
+  });
+
+  talkButton.addEventListener("click", async () => {
+
+    if(callActive){
+
+      await vapi.stop();
+
+      return;
+
+    }
+
+    setButtonStarting();
+
+    status.textContent =
+      "Connecting to the AI receptionist...";
+
+    try{
+
+      await vapi.start(assistantId);
+
+    }catch(error){
+
+      console.error("Unable to start Vapi call:", error);
+
+      callActive = false;
+
+      setButtonReady();
+
+      status.textContent =
+        "The call couldn't be started. Please try again.";
+
+    }
+
+  });
+
+</script>
 </body>
 </html>
