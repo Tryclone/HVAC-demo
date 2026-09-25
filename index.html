@@ -468,6 +468,270 @@ footer{
   }
 
 }
+/* HVAC ESTIMATE + LEAD CAPTURE */
+
+.section{
+  padding:0 0 80px;
+}
+
+.section-card{
+  border:1px solid var(--line);
+  border-radius:28px;
+  background:#ffffff07;
+  padding:38px;
+}
+
+.section-label{
+  display:block;
+  text-align:center;
+  color:var(--blue);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  margin-bottom:10px;
+}
+
+.section-title{
+  text-align:center;
+  font-size:38px;
+  letter-spacing:-.04em;
+  margin:0 0 10px;
+}
+
+.section-title span{
+  color:var(--blue);
+}
+
+.section-intro{
+  color:var(--muted);
+  line-height:1.6;
+  max-width:700px;
+  margin:0 auto 28px;
+  text-align:center;
+}
+
+.estimate-form{
+  max-width:820px;
+  margin:0 auto;
+}
+
+.field-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px;
+  margin-top:20px;
+}
+
+.field{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.field.full{
+  grid-column:1/-1;
+}
+
+.field label{
+  font-size:13px;
+  font-weight:800;
+  color:#dcefff;
+}
+
+.field select,
+.field input,
+.field textarea{
+  width:100%;
+  border:1px solid #ffffff1c;
+  border-radius:12px;
+  background:#07111a;
+  color:var(--text);
+  padding:13px 14px;
+  font:inherit;
+  outline:none;
+}
+
+.field select:focus,
+.field input:focus,
+.field textarea:focus{
+  border-color:#42b9ff88;
+  box-shadow:0 0 0 3px #42b9ff14;
+}
+
+.field textarea{
+  min-height:110px;
+  resize:vertical;
+}
+
+.primary-button{
+  width:100%;
+  border:0;
+  border-radius:13px;
+  padding:15px 18px;
+  margin-top:22px;
+  background:var(--blue);
+  color:#06111a;
+  font-size:15px;
+  font-weight:900;
+  cursor:pointer;
+  transition:.2s ease;
+}
+
+.primary-button:hover{
+  transform:translateY(-1px);
+  filter:brightness(1.06);
+}
+
+.primary-button:disabled{
+  opacity:.65;
+  cursor:wait;
+  transform:none;
+}
+
+.estimate-result{
+  display:none;
+  margin-top:26px;
+  padding:25px;
+  border:1px solid #42b9ff55;
+  border-radius:18px;
+  background:#42b9ff0d;
+  text-align:center;
+}
+
+.estimate-result.show{
+  display:block;
+}
+
+.estimate-result h3{
+  margin:0 0 7px;
+  color:#dff4ff;
+  font-size:14px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+
+.estimate-range{
+  font-size:clamp(32px,6vw,48px);
+  line-height:1;
+  font-weight:900;
+  color:var(--blue);
+  margin:10px 0 14px;
+}
+
+.estimate-result p{
+  max-width:650px;
+  margin:0 auto;
+  color:var(--muted);
+  line-height:1.55;
+  font-size:13px;
+}
+
+.quote-cta{
+  display:none;
+  margin-top:22px;
+  padding-top:22px;
+  border-top:1px solid #ffffff12;
+}
+
+.quote-cta.show{
+  display:block;
+}
+
+.quote-cta h4{
+  margin:0 0 7px;
+  font-size:22px;
+}
+
+.quote-cta p{
+  color:var(--muted);
+  margin:0 0 15px;
+  line-height:1.5;
+}
+
+.secondary-button{
+  display:inline-block;
+  border:1px solid #42b9ff66;
+  border-radius:12px;
+  padding:13px 18px;
+  background:#42b9ff14;
+  color:#dff4ff;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.lead-section{
+  display:none;
+}
+
+.lead-section.show{
+  display:block;
+}
+
+.lead-summary{
+  max-width:820px;
+  margin:0 auto 20px;
+  padding:17px;
+  border-radius:14px;
+  border:1px solid #ffffff12;
+  background:#ffffff06;
+  color:#dcefff;
+  font-size:14px;
+  line-height:1.55;
+}
+
+.lead-summary strong{
+  color:var(--blue);
+}
+
+.form-message{
+  display:none;
+  margin-top:16px;
+  padding:13px 15px;
+  border-radius:12px;
+  font-size:13px;
+  line-height:1.5;
+}
+
+.form-message.show{
+  display:block;
+}
+
+.form-message.success{
+  border:1px solid #38d99655;
+  background:#38d99610;
+  color:#cffff0;
+}
+
+.form-message.error{
+  border:1px solid #ff6b6b55;
+  background:#ff6b6b0d;
+  color:#ffdede;
+}
+
+@media(max-width:760px){
+
+  .field-grid{
+    grid-template-columns:1fr;
+  }
+
+  .field.full{
+    grid-column:auto;
+  }
+
+}
+
+@media(max-width:500px){
+
+  .section-card{
+    padding:25px;
+  }
+
+  .section-title{
+    font-size:32px;
+  }
+
+}
 </style>
 </head>
 
@@ -681,6 +945,443 @@ footer{
 
 </section>
 
+
+<!-- INSTANT HVAC ESTIMATE -->
+
+<section class="section wrap" id="estimate">
+
+  <div class="section-card">
+
+    <span class="section-label">
+      Step 1 — Instant HVAC Estimate
+    </span>
+
+    <h2 class="section-title">
+      See Your <span>Price Range First</span>
+    </h2>
+
+    <p class="section-intro">
+      Answer a few quick questions and get a ballpark demonstration
+      range — no contact information required.
+    </p>
+
+    <form id="hvac-estimate-form" class="estimate-form">
+
+      <div class="field-grid">
+
+        <div class="field full">
+
+          <label for="service">
+            What do you need?
+          </label>
+
+          <select id="service" required>
+
+            <option value="">
+              Select a service
+            </option>
+
+            <option value="AC Repair">
+              AC Repair
+            </option>
+
+            <option value="Heating/Furnace Repair">
+              Heating/Furnace Repair
+            </option>
+
+            <option value="AC Replacement">
+              AC Replacement
+            </option>
+
+            <option value="Furnace Replacement">
+              Furnace Replacement
+            </option>
+
+            <option value="Complete HVAC Replacement">
+              Complete HVAC Replacement
+            </option>
+
+            <option value="New HVAC Installation">
+              New HVAC Installation
+            </option>
+
+            <option value="Maintenance/Tune-Up">
+              Maintenance/Tune-Up
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div
+          class="field"
+          id="system-size-field"
+          style="display:none;">
+
+          <label for="systemSize">
+            Approximate system size
+          </label>
+
+          <select id="systemSize">
+
+            <option value="">
+              Select a size
+            </option>
+
+            <option value="1.5–2 Ton">
+              1.5–2 Ton
+            </option>
+
+            <option value="2.5–3 Ton">
+              2.5–3 Ton
+            </option>
+
+            <option value="3.5–4 Ton">
+              3.5–4 Ton
+            </option>
+
+            <option value="4.5–5 Ton">
+              4.5–5 Ton
+            </option>
+
+            <option value="Not Sure">
+              Not Sure
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div
+          class="field"
+          id="efficiency-field"
+          style="display:none;">
+
+          <label for="efficiency">
+            Efficiency preference
+          </label>
+
+          <select id="efficiency">
+
+            <option value="">
+              Select an option
+            </option>
+
+            <option value="Standard">
+              Standard
+            </option>
+
+            <option value="High Efficiency">
+              High Efficiency
+            </option>
+
+            <option value="Not Sure">
+              Not Sure
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div class="field full">
+
+          <label for="situation">
+            What's the situation?
+          </label>
+
+          <select id="situation" required>
+
+            <option value="">
+              Select what best describes it
+            </option>
+
+            <option value="System isn't working">
+              System isn't working
+            </option>
+
+            <option value="Not cooling/heating properly">
+              Not cooling/heating properly
+            </option>
+
+            <option value="System is old">
+              System is old
+            </option>
+
+            <option value="High energy bills">
+              High energy bills
+            </option>
+
+            <option value="Want better efficiency">
+              Want better efficiency
+            </option>
+
+            <option value="Planning replacement">
+              Planning replacement
+            </option>
+
+            <option value="Just researching">
+              Just researching
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div class="field full">
+
+          <label for="urgency">
+            How soon are you looking?
+          </label>
+
+          <select id="urgency" required>
+
+            <option value="">
+              Select a timeframe
+            </option>
+
+            <option value="Emergency">
+              Emergency
+            </option>
+
+            <option value="Within a few days">
+              Within a few days
+            </option>
+
+            <option value="Within a few weeks">
+              Within a few weeks
+            </option>
+
+            <option value="Just researching">
+              Just researching
+            </option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+
+      <button
+        class="primary-button"
+        type="submit">
+
+        CALCULATE MY ESTIMATE
+
+      </button>
+
+    </form>
+
+
+    <div
+      id="estimate-result"
+      class="estimate-result"
+      aria-live="polite">
+
+      <h3>
+        Estimated Demonstration Range
+      </h3>
+
+      <div
+        id="estimate-range"
+        class="estimate-range">
+      </div>
+
+      <p id="estimate-explanation"></p>
+
+
+      <div
+        id="quote-cta"
+        class="quote-cta">
+
+        <h4>
+          Want a More Direct Quote?
+        </h4>
+
+        <p>
+          Give us a few details and see how a real HVAC business could
+          capture the opportunity and follow up with you.
+        </p>
+
+        <button
+          id="request-quote-button"
+          class="secondary-button"
+          type="button">
+
+          REQUEST YOUR QUOTE
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- HVAC LEAD CAPTURE -->
+
+<section class="section wrap lead-section" id="quote">
+
+  <div class="section-card">
+
+    <span class="section-label">
+      Step 2 — Request Your Quote
+    </span>
+
+    <h2 class="section-title">
+      Tell Us About Your <span>HVAC Project</span>
+    </h2>
+
+    <p class="section-intro">
+      Submit your information and see how the lead could be delivered
+      to the HVAC business for follow-up.
+    </p>
+
+    <div id="lead-summary" class="lead-summary"></div>
+
+    <form id="hvac-lead-form" class="estimate-form">
+
+      <div class="field-grid">
+
+        <div class="field">
+
+          <label for="lead-name">
+            Name
+          </label>
+
+          <input
+            id="lead-name"
+            type="text"
+            autocomplete="name"
+            required>
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="lead-phone">
+            Phone
+          </label>
+
+          <input
+            id="lead-phone"
+            type="tel"
+            autocomplete="tel"
+            required>
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="lead-email">
+            Email
+          </label>
+
+          <input
+            id="lead-email"
+            type="email"
+            autocomplete="email"
+            required>
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="lead-timeframe">
+            Preferred timeframe
+          </label>
+
+          <select
+            id="lead-timeframe"
+            required>
+
+            <option value="">
+              Select a timeframe
+            </option>
+
+            <option value="ASAP">
+              ASAP
+            </option>
+
+            <option value="Within a few days">
+              Within a few days
+            </option>
+
+            <option value="Within a few weeks">
+              Within a few weeks
+            </option>
+
+            <option value="Just researching">
+              Just researching
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div class="field full">
+
+          <label for="lead-address">
+            Property address
+          </label>
+
+          <input
+            id="lead-address"
+            type="text"
+            autocomplete="street-address"
+            required>
+
+        </div>
+
+
+        <div class="field full">
+
+          <label for="lead-details">
+            Additional project details
+          </label>
+
+          <textarea
+            id="lead-details"
+            placeholder="Tell us anything else about the problem or project.">
+          </textarea>
+
+        </div>
+
+      </div>
+
+
+      <button
+        id="lead-submit-button"
+        class="primary-button"
+        type="submit">
+
+        SEND MY QUOTE REQUEST
+
+      </button>
+
+
+      <div
+        id="lead-form-message"
+        class="form-message"
+        role="status"
+        aria-live="polite">
+      </div>
+
+    </form>
+
+  </div>
+
+</section>
 
 <!-- TRY TO BREAK -->
 
@@ -931,6 +1632,534 @@ footer{
 
   });
 
+/* HVAC ESTIMATE + LEAD CAPTURE */
+
+const estimateForm = document.getElementById("hvac-estimate-form");
+
+const serviceField = document.getElementById("service");
+
+const systemSizeField =
+  document.getElementById("system-size-field");
+
+const efficiencyField =
+  document.getElementById("efficiency-field");
+
+const systemSizeSelect =
+  document.getElementById("systemSize");
+
+const efficiencySelect =
+  document.getElementById("efficiency");
+
+const estimateResult =
+  document.getElementById("estimate-result");
+
+const estimateRange =
+  document.getElementById("estimate-range");
+
+const estimateExplanation =
+  document.getElementById("estimate-explanation");
+
+const quoteCta =
+  document.getElementById("quote-cta");
+
+const requestQuoteButton =
+  document.getElementById("request-quote-button");
+
+const leadSection =
+  document.getElementById("quote");
+
+const leadSummary =
+  document.getElementById("lead-summary");
+
+const leadForm =
+  document.getElementById("hvac-lead-form");
+
+const leadSubmitButton =
+  document.getElementById("lead-submit-button");
+
+const leadFormMessage =
+  document.getElementById("lead-form-message");
+
+
+let estimateData = null;
+
+
+const replacementServices = [
+  "AC Replacement",
+  "Furnace Replacement",
+  "Complete HVAC Replacement",
+  "New HVAC Installation"
+];
+
+
+function updateReplacementFields(){
+
+  const needsSystemDetails =
+    replacementServices.includes(serviceField.value);
+
+  systemSizeField.style.display =
+    needsSystemDetails ? "" : "none";
+
+  efficiencyField.style.display =
+    needsSystemDetails ? "" : "none";
+
+  systemSizeSelect.required =
+    needsSystemDetails;
+
+  efficiencySelect.required =
+    needsSystemDetails;
+
+
+  if(!needsSystemDetails){
+
+    systemSizeSelect.value = "";
+
+    efficiencySelect.value = "";
+
+  }
+
+}
+
+
+serviceField.addEventListener(
+  "change",
+  updateReplacementFields
+);
+
+
+function calculateEstimate(){
+
+  const service =
+    serviceField.value;
+
+  const systemSize =
+    systemSizeSelect.value;
+
+  const efficiency =
+    efficiencySelect.value;
+
+
+  /* REPAIR */
+
+  if(
+    service === "AC Repair" ||
+    service === "Heating/Furnace Repair"
+  ){
+
+    return {
+
+      range:"$89 – $500+",
+
+      explanation:
+        "This is a ballpark demonstration range. Actual repair costs depend on the equipment, problem, parts and labor required."
+
+    };
+
+  }
+
+
+  /* MAINTENANCE */
+
+  if(
+    service === "Maintenance/Tune-Up"
+  ){
+
+    return {
+
+      range:"Service pricing varies",
+
+      explanation:
+        "This demonstration does not assign a fixed maintenance price. A real HVAC business could customize this section with its own maintenance or tune-up pricing."
+
+    };
+
+  }
+
+
+  /* REPLACEMENT / INSTALLATION */
+
+  let low = 6000;
+
+  let high = 9500;
+
+
+  if(systemSize === "1.5–2 Ton"){
+
+    low = 5500;
+    high = 8500;
+
+  }
+
+  else if(systemSize === "2.5–3 Ton"){
+
+    low = 6000;
+    high = 9500;
+
+  }
+
+  else if(systemSize === "3.5–4 Ton"){
+
+    low = 7500;
+    high = 11500;
+
+  }
+
+  else if(systemSize === "4.5–5 Ton"){
+
+    low = 9000;
+    high = 14000;
+
+  }
+
+  else if(systemSize === "Not Sure"){
+
+    low = 6000;
+    high = 14000;
+
+  }
+
+
+  /* HIGH EFFICIENCY */
+
+  if(
+    efficiency === "High Efficiency"
+  ){
+
+    low = Math.max(low,12000);
+
+    high = Math.max(high,15000);
+
+  }
+
+
+  return {
+
+    range:
+      "$" +
+      low.toLocaleString() +
+      " – $" +
+      high.toLocaleString(),
+
+    explanation:
+      "This is a ballpark demonstration range. Actual pricing depends on equipment, installation requirements, property conditions and other project-specific factors."
+
+  };
+
+}
+
+
+estimateForm.addEventListener(
+  "submit",
+  (event) => {
+
+    event.preventDefault();
+
+
+    const service =
+      serviceField.value;
+
+    const situation =
+      document.getElementById(
+        "situation"
+      ).value;
+
+    const urgency =
+      document.getElementById(
+        "urgency"
+      ).value;
+
+    const systemSize =
+      systemSizeSelect.value ||
+      "N/A";
+
+    const efficiency =
+      efficiencySelect.value ||
+      "N/A";
+
+
+    const result =
+      calculateEstimate();
+
+
+    estimateData = {
+
+      service,
+
+      situation,
+
+      urgency,
+
+      systemSize,
+
+      efficiency,
+
+      estimatedRange:
+        result.range
+
+    };
+
+
+    estimateRange.textContent =
+      result.range;
+
+
+    estimateExplanation.textContent =
+      result.explanation;
+
+
+    estimateResult.classList.add(
+      "show"
+    );
+
+
+    quoteCta.classList.add(
+      "show"
+    );
+
+
+    setTimeout(() => {
+
+      estimateResult.scrollIntoView({
+        behavior:"smooth",
+        block:"center"
+      });
+
+    },50);
+
+  }
+);
+
+
+requestQuoteButton.addEventListener(
+  "click",
+  () => {
+
+    if(!estimateData){
+
+      return;
+
+    }
+
+
+    leadSummary.innerHTML = `
+
+      <strong>Your demonstration estimate:</strong>
+      ${estimateData.estimatedRange}
+
+      <br>
+
+      <strong>Service:</strong>
+      ${estimateData.service}
+
+      ${
+        estimateData.systemSize !== "N/A"
+        ? ` · <strong>System:</strong>
+           ${estimateData.systemSize}`
+        : ""
+      }
+
+      ${
+        estimateData.efficiency !== "N/A"
+        ? ` · <strong>Efficiency:</strong>
+           ${estimateData.efficiency}`
+        : ""
+      }
+
+    `;
+
+
+    leadSection.classList.add(
+      "show"
+    );
+
+
+    setTimeout(() => {
+
+      leadSection.scrollIntoView({
+        behavior:"smooth",
+        block:"start"
+      });
+
+    },50);
+
+  }
+);
+
+
+leadForm.addEventListener(
+  "submit",
+  async (event) => {
+
+    event.preventDefault();
+
+
+    if(!estimateData){
+
+      leadFormMessage.className =
+        "form-message show error";
+
+      leadFormMessage.textContent =
+        "Please complete the estimate first.";
+
+      return;
+
+    }
+
+
+    leadSubmitButton.disabled =
+      true;
+
+    leadSubmitButton.textContent =
+      "SENDING...";
+
+
+    leadFormMessage.className =
+      "form-message";
+
+    leadFormMessage.textContent =
+      "";
+
+
+    const data = {
+
+      name:
+        document.getElementById(
+          "lead-name"
+        ).value.trim(),
+
+      phone:
+        document.getElementById(
+          "lead-phone"
+        ).value.trim(),
+
+      email:
+        document.getElementById(
+          "lead-email"
+        ).value.trim(),
+
+      address:
+        document.getElementById(
+          "lead-address"
+        ).value.trim(),
+
+      timeline:
+        document.getElementById(
+          "lead-timeframe"
+        ).value,
+
+      details:
+        document.getElementById(
+          "lead-details"
+        ).value.trim(),
+
+      service:
+        estimateData.service,
+
+      situation:
+        estimateData.situation,
+
+      urgency:
+        estimateData.urgency,
+
+      systemSize:
+        estimateData.systemSize,
+
+      efficiency:
+        estimateData.efficiency,
+
+      estimatedRange:
+        estimateData.estimatedRange,
+
+      timestamp:
+        new Date().toLocaleString()
+
+    };
+
+
+    try{
+
+      const response =
+        await fetch(
+          "/.netlify/functions/send-telegram",
+          {
+            method:"POST",
+
+            headers:{
+              "Content-Type":
+                "application/json"
+            },
+
+            body:
+              JSON.stringify(data)
+
+          }
+        );
+
+
+      const result =
+        await response.json();
+
+
+      if(
+        !response.ok ||
+        !result.success
+      ){
+
+        throw new Error(
+          result.error ||
+          "Notification failed"
+        );
+
+      }
+
+
+      leadFormMessage.className =
+        "form-message show success";
+
+
+      leadFormMessage.textContent =
+        "Request received — thank you! This demonstration shows how the lead could be passed to the HVAC team for follow-up.";
+
+
+      leadForm.reset();
+
+
+      leadSubmitButton.textContent =
+        "REQUEST SENT";
+
+
+    }
+
+    catch(error){
+
+      console.error(
+        "Lead submission error:",
+        error
+      );
+
+
+      leadFormMessage.className =
+        "form-message show error";
+
+
+      leadFormMessage.textContent =
+        "The request could not be sent right now. Please try again.";
+
+
+      leadSubmitButton.disabled =
+        false;
+
+
+      leadSubmitButton.textContent =
+        "SEND MY QUOTE REQUEST";
+
+    }
+
+  }
+);
+
+
+updateReplacementFields();
 </script>
 </body>
 </html>
